@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>574422587657-0k83gfojn3l49mnr7qqfv8nchejokq86.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.574422587657-0k83gfojn3l49mnr7qqfv8nchejokq86</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDvyF0bjRknindC7Vs7TPcVGF7YlNIb2to</string>
+	<key>GCM_SENDER_ID</key>
+	<string>574422587657</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>DK3000.KolesovTaskAezakmi</string>
+	<key>PROJECT_ID</key>
+	<string>kolesovtaskaezakmi</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kolesovtaskaezakmi.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:574422587657:ios:7041a821d793e2f011dbd8</string>
+</dict>
+</plist>
