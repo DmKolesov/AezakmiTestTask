@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct RegisterView: View {
     @StateObject private var viewModel: RegisterViewModel
@@ -168,7 +167,6 @@ struct RegisterView: View {
         .frame(maxWidth: .infinity, alignment: .center)
     }
 
-    // MARK: - Actions
     private func submitRegistration() {
         focusedField = nil
         viewModel.register()

@@ -12,8 +12,7 @@ struct TextElementsLayer: View {
     @Binding var textElements: [TextElement]
     var imageSize: CGSize
     var onSelectElement: (TextElement) -> Void
-    
-    // Проверка валидности размеров
+
     private var isValidSize: Bool {
         imageSize.width > 0 && imageSize.height > 0 && !imageSize.width.isNaN && !imageSize.height.isNaN
     }
@@ -33,4 +32,3 @@ struct TextElementsLayer: View {
         .clipped()
     }
 }
-

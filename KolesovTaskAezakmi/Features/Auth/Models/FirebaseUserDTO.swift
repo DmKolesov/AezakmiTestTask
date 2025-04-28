@@ -9,7 +9,6 @@ import Foundation
 import FirebaseAuth
 import GoogleSignIn
 
-
 public struct FirebaseUserDTO {
     public let uid: String
     public let email: String

@@ -39,4 +39,3 @@ final class TextElementsViewModel: ObservableObject {
         textElements.removeAll { $0.id == id }
     }
 }
-

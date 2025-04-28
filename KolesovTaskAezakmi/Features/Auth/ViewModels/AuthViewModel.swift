@@ -13,7 +13,6 @@ final class AuthViewModel: ObservableObject {
         case idle
         case loading
         case success(User)
-        case needsEmailVerification(User)
         case error(AuthError)
     }
 
@@ -104,12 +103,14 @@ final class AuthViewModel: ObservableObject {
     }
 
     private func handleAuthResult(user: User) {
-        if user.isEmailVerified {
-            state = .success(user)
-        } else {
-            state = .needsEmailVerification(user)
-            sendVerificationEmail()
-        }
+// закоменнченный метод для верификации пользователя
+        state = .success(user)
+//        if user.isEmailVerified {
+//            state = .success(user)
+//        } else {
+//            state = .needsEmailVerification(user)
+//            sendVerificationEmail()
+//        }
     }
 
     private func setupValidation() {

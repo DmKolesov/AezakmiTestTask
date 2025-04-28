@@ -32,4 +32,3 @@ struct FilterPaletteView: View {
         .background(Color(.systemGroupedBackground))
     }
 }
-

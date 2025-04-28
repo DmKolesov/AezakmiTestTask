@@ -25,4 +25,3 @@ enum ImageError: LocalizedError {
         }
     }
 }
-

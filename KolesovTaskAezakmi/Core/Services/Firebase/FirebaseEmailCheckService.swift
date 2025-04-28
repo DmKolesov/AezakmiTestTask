@@ -27,4 +27,3 @@ final class FirebaseEmailCheckService: EmailCheckHandling {
         .eraseToAnyPublisher()
     }
 }
-

@@ -15,4 +15,3 @@ final class ToolbarViewModel: ObservableObject {
         currentTool = (currentTool == tool) ? .none : tool
     }
 }
-

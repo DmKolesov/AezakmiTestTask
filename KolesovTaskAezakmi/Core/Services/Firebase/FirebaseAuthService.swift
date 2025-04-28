@@ -23,14 +23,23 @@ final class FirebaseAuthService: FirebaseServiceProtocol {
     init(auth: Auth = .auth()) {
         self.auth = auth
     }
-    
+
     func login(email: String, password: String) -> AnyPublisher<FirebaseUserDTO, AuthError> {
         Future<AuthDataResult, Error> { promise in
             Auth.auth().signIn(withEmail: email, password: password) { result, error in
-                if let result = result {
-                    promise(.success(result))
+                if let error = error {
+                    promise(.failure(error))
+                } else if let result = result {
+                 
+                    result.user.reload { error in
+                        if let error = error {
+                            promise(.failure(error))
+                        } else {
+                            promise(.success(result))
+                        }
+                    }
                 } else {
-                    promise(.failure(error ?? NSError(domain: "Unknown", code: -1)))
+                    promise(.failure(NSError(domain: "Auth", code: -1)))
                 }
             }
         }
@@ -89,7 +98,5 @@ final class FirebaseAuthService: FirebaseServiceProtocol {
             }
         }
         .eraseToAnyPublisher()
-    }
-    
+    }    
 }
-

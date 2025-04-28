@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 enum ToolMode {
     case none, draw, text, filter
     var isDrawing: Bool { self == .draw }

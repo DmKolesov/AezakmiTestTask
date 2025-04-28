@@ -190,12 +190,12 @@
 		EB6978A72DBB02DB00D9CA0F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				EB6978E72DBB0FC800D9CA0F /* MainViewModel.swift */,
 				EB6978DD2DBB0F4E00D9CA0F /* ImageProcessingViewModel.swift */,
 				EB6978DF2DBB0F7400D9CA0F /* CanvasViewModel.swift */,
 				EB6978E12DBB0F9400D9CA0F /* TextElementsViewModel.swift */,
 				EB6978E32DBB0FA600D9CA0F /* ExportViewModel.swift */,
 				EB6978E52DBB0FB900D9CA0F /* ToolbarViewModel.swift */,
-				EB6978E72DBB0FC800D9CA0F /* MainViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";

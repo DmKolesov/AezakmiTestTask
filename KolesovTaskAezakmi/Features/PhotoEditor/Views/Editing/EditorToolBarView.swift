@@ -58,4 +58,3 @@ struct EditorToolbarView: View {
         .background(.bar)
     }
 }
-

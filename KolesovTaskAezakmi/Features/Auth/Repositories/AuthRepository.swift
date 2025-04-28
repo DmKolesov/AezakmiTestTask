@@ -16,16 +16,14 @@ protocol AuthRepositoryProtocol {
 }
 
 public final class AuthRepository: AuthRepositoryProtocol {
-    
-    // MARK: - Dependencies
+
     private let emailAuthService: FirebaseServiceProtocol
     private let googleAuthService: GoogleSignInServiceProtocol
     private let emailCheckService: EmailCheckHandling
     private let emailVerificationService: EmailVerificationHandling
     private let userMapper: FirebaseUserToDomainMapper
     private let googleUserMapper: GoogleUserDataToDTOMapper
-    
-    // MARK: - Initialization
+
     init(
         emailAuthService: FirebaseServiceProtocol,
         googleAuthService: GoogleSignInServiceProtocol,
@@ -41,21 +39,35 @@ public final class AuthRepository: AuthRepositoryProtocol {
         self.userMapper = userMapper
         self.googleUserMapper = googleUserMapper
     }
+
+    // заменить на этот метод если все таки будет необхоимо верифицировать пользователя через почту
+//    func login(email: String, password: String) -> AnyPublisher<User, AuthError> {
+//        emailCheckService.checkEmailExists(email: email)
+//            .mapError { error -> AuthError in
+//                if let authError = error as? AuthError {
+//                    return authError
+//                }
+//                return .firebaseError(error)
+//            }
+//            .flatMap { [weak self] exists -> AnyPublisher<User, AuthError> in
+//                guard let self = self else {
+//                    return Fail(error: .userNotLoggedIn).eraseToAnyPublisher()
+//                }
+//                return self.handleEmailExistence(exists: exists, email: email, password: password)
+//            }
+//            .eraseToAnyPublisher()
+//    }
     
-    // MARK: - Public Methods
     func login(email: String, password: String) -> AnyPublisher<User, AuthError> {
-        emailCheckService.checkEmailExists(email: email)
+        emailAuthService.login(email: email, password: password)
+            .map { [userMapper] dto in
+                userMapper.map(input: dto)
+            }
             .mapError { error -> AuthError in
                 if let authError = error as? AuthError {
                     return authError
                 }
                 return .firebaseError(error)
-            }
-            .flatMap { [weak self] exists -> AnyPublisher<User, AuthError> in
-                guard let self = self else {
-                    return Fail(error: .userNotLoggedIn).eraseToAnyPublisher()
-                }
-                return self.handleEmailExistence(exists: exists, email: email, password: password)
             }
             .eraseToAnyPublisher()
     }
@@ -88,8 +100,7 @@ public final class AuthRepository: AuthRepositoryProtocol {
                }
                .eraseToAnyPublisher()
        }
-    
-    // MARK: - Private Methods
+
     private func handleEmailExistence(
         exists: Bool,
         email: String,
@@ -150,6 +161,3 @@ public final class AuthRepository: AuthRepositoryProtocol {
         return .googleSignInError(error)
     }
 }
-
-
-

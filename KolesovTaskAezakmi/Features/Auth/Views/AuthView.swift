@@ -16,6 +16,7 @@ struct AuthView: View {
     @State private var alertType: AlertType = .info
     @State private var alertTitle = ""
     @State private var alertMessage = ""
+    @State private var navigateToPhotoEditor = false
 
     init(
         repository: AuthRepositoryProtocol = AuthRepository(
@@ -36,6 +37,9 @@ struct AuthView: View {
 
     var body: some View {
         NavigationStack {
+            NavigationLink(destination: PhotoEditingView(), isActive: $navigateToPhotoEditor) {
+                EmptyView()
+            }
             ScrollView {
                 VStack(spacing: 24) {
                     headerSection()
@@ -71,7 +75,7 @@ struct AuthView: View {
 
     // MARK: Subviews
     private func headerSection() -> some View {
-        Text("AEZAKMI Group Test Task")
+        Text("AEZAKMI Group:")
             .font(.largeTitle.bold())
             .frame(maxWidth: .infinity, alignment: .leading)
     }
@@ -168,15 +172,13 @@ struct AuthView: View {
     private func handleStateChange(_ state: AuthViewModel.State) {
         switch state {
         case .success:
-            alertType = .success
-            alertTitle = "Success"
-            alertMessage = "You have signed in successfully."
-            showAlert = true
-        case .needsEmailVerification:
-            alertType = .info
-            alertTitle = "Email Verification"
-            alertMessage = "A verification link has been sent to your email."
-            showAlert = true
+            navigateToPhotoEditor = true
+            showAlert = false
+//        case .needsEmailVerification:
+//            alertType = .info
+//            alertTitle = "Email Verification"
+//            alertMessage = "A verification link has been sent to your email."
+//            showAlert = true
         case .error(let error):
             alertType = .error
             alertTitle = "Error"

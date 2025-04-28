@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 import PencilKit
 
-// MARK: - MainViewModel
 @MainActor
 final class MainViewModel: ObservableObject {
     // Sub-view models
@@ -76,15 +75,6 @@ final class MainViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    
-
-//    func renderFinalImage() -> UIImage? {
-//        imageVM.render(
-//            drawing: canvasVM.currentDrawing,
-//            texts: textVM.textElements
-//        )
-//    }
-    
     func renderFinalImage() -> UIImage? {
             guard let baseImage = imageVM.originalImage,
                   baseImage.size.width > 0,
@@ -94,8 +84,6 @@ final class MainViewModel: ObservableObject {
                 print("Invalid base image size")
                 return nil
             }
-            
-            // Проверка параметров текста перед рендерингом
             let validTexts = textVM.textElements.map { element -> TextElement in
                 var element = element
                 element.normalizedPosition = CGPoint(
@@ -124,5 +112,3 @@ final class MainViewModel: ObservableObject {
         }
     }
 }
-
-

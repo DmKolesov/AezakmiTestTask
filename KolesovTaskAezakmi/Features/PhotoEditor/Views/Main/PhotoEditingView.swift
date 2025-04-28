@@ -9,7 +9,6 @@ import SwiftUI
 import PhotosUI
 import AVFoundation
 
-// MARK: - Main View
 struct PhotoEditingView: View {
     @StateObject private var mainVM = MainViewModel()
     @State private var selectedSource: ImageSource = .library
@@ -104,7 +103,6 @@ struct PhotoEditingView: View {
         }
     }
 
-    // MARK: - Handlers
     private func handleSelectTap() {
         #if targetEnvironment(simulator)
         if selectedSource == .camera {
@@ -141,7 +139,6 @@ struct PhotoEditingView: View {
         }
     }
 
-    // MARK: - Toolbar
     @ToolbarContentBuilder
     private var mainToolbar: some ToolbarContent {
         ToolbarItem(placement: .primaryAction) {
